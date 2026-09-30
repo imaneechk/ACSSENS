@@ -1,25 +1,35 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Atlas Cloud Services – Log in</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+
   <style>
     :root {
-      --purple: #a46cf7;        /* Log in button */
-      --purple-link: #6a0dd1;   /* "Choose a user" link */
+      --purple: #a46cf7;
+      --purple-link: #6a0dd1;
       --text: #1f1f2b;
       --muted: #6b7280;
       --border: #e5e7eb;
       --logo-navy: #2b2a86;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html, body { height: 100%; }
+    html,
+    body {
+      height: 100%;
+    }
 
     body {
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -42,24 +52,25 @@
       flex-direction: column;
     }
 
-    /* Logo */
     .brand {
       display: flex;
       justify-content: center;
       align-items: center;
       padding-bottom: 16px;
       border-bottom: 1px solid var(--border);
-  /* removed the fixed height: 170px */
     }
+
     .brand img,
     .brand svg {
-      max-height: 120px;         /* same as the Odoo form */
+      max-height: 120px;
       max-width: 100%;
       width: auto;
       display: block;
     }
 
-    form { margin-top: 24px; }
+    form {
+      margin-top: 24px;
+    }
 
     .label-row {
       display: flex;
@@ -79,10 +90,18 @@
       font-size: 15px;
       text-decoration: none;
     }
-    .choose-user:hover { text-decoration: underline; }
 
-    .field { margin-bottom: 22px; }
-    .field:last-of-type { margin-bottom: 28px; }
+    .choose-user:hover {
+      text-decoration: underline;
+    }
+
+    .field {
+      margin-bottom: 22px;
+    }
+
+    .field:last-of-type {
+      margin-bottom: 28px;
+    }
 
     input {
       width: 100%;
@@ -97,7 +116,11 @@
       outline: none;
       transition: border-color .15s, box-shadow .15s;
     }
-    input::placeholder { color: #8b8f98; }
+
+    input::placeholder {
+      color: #8b8f98;
+    }
+
     input:focus {
       border-color: var(--purple);
       box-shadow: 0 0 0 3px rgba(164, 108, 247, .25);
@@ -121,7 +144,11 @@
       border: 0;
       transition: filter .15s;
     }
-    .btn-primary:hover { filter: brightness(.95); }
+
+    .btn-primary:hover {
+      filter: brightness(.95);
+    }
+
     .btn-primary:focus-visible,
     .btn-provider:focus-visible {
       outline: 3px solid rgba(164, 108, 247, .5);
@@ -146,55 +173,107 @@
       font-size: 18px;
       transition: background .15s;
     }
-    .btn-provider:hover { background: #faf8ff; }
-    .btn-provider svg { width: 20px; height: 20px; flex: none; color: var(--purple); }
 
-    /* Scale everything down on smaller screens */
+    .btn-provider:hover {
+      background: #faf8ff;
+    }
+
+    .btn-provider svg {
+      width: 20px;
+      height: 20px;
+      flex: none;
+      color: var(--purple);
+    }
+
     @media (max-width: 520px) {
-      body { padding: 24px 12px; }
-      .card { padding: 20px; }
+      body {
+        padding: 24px 12px;
+      }
+
+      .card {
+        padding: 20px;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <main class="card">
 
     <div class="brand">
       <img src="ACSLOGO.png" alt="Atlas Cloud Services" />
     </div>
 
-    <form onsubmit="window.location.href='https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize?response_type=token&client_id=12ba3a42-b647-48e3-ab79-ee9dc8dbd3b1&redirect_uri=https%3A%2F%2Facserp.atlascs.ma%2Fauth_oauth%2Fsignin&scope=openid+profile+email&state=%7B%22d%22%3A+%22atlascloudservicesbdd%22,+%22p%22%3A+4,+%22r%22%3A+%22https%253A%252F%252Facserp.atlascs.ma%252Fodoo%253F%22%7D'; return false;">
+    <form>
+
       <div class="field">
         <div class="label-row">
           <label for="email">Email</label>
-         <!-- <a class="choose-user" href="#">Choose a user</a> -->
         </div>
-        <input id="email" name="email" type="email" placeholder="Email" autocomplete="email" required />
+
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Email"
+          autocomplete="email"
+        />
       </div>
 
       <div class="field">
         <div class="label-row">
           <label for="password">Password</label>
         </div>
-        <input id="password" name="password" type="password" placeholder="Password" autocomplete="current-password" required />
+
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Password"
+          autocomplete="current-password"
+        />
       </div>
 
-      <button class="btn btn-primary" type="submit">Log in</button>
+      <!-- Log in button -->
+      <button
+        class="btn btn-primary"
+        type="button"
+        onclick="window.location.href='https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize?response_type=token&client_id=12ba3a42-b647-48e3-ab79-ee9dc8dbd3b1&redirect_uri=https%3A%2F%2Facserp.atlascs.ma%2Fauth_oauth%2Fsignin&scope=openid+profile+email&state=%7B%22d%22%3A+%22atlascloudservicesbdd%22,+%22p%22%3A+4,+%22r%22%3A+%22https%253A%252F%252Facserp.atlascs.ma%252Fodoo%253F%22%7D'"
+      >
+        Log in
+      </button>
 
       <p class="or">- or -</p>
 
+      <!-- Microsoft Azure button -->
       <button
         class="btn btn-provider"
         type="button"
         onclick="window.location.href='https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize?response_type=token&client_id=12ba3a42-b647-48e3-ab79-ee9dc8dbd3b1&redirect_uri=https%3A%2F%2Facserp.atlascs.ma%2Fauth_oauth%2Fsignin&scope=openid+profile+email&state=%7B%22d%22%3A+%22atlascloudservicesbdd%22,+%22p%22%3A+4,+%22r%22%3A+%22https%253A%252F%252Facserp.atlascs.ma%252Fodoo%253F%22%7D'"
       >
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
           <path d="M11 7 9.6 8.4 12.2 11H2v2h10.2l-2.6 2.6L11 17l5-5-5-5Zm9 12h-8v2h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-8v2h8v14Z" />
         </svg>
+
         Microsoft Azure
       </button>
+
     </form>
 
   </main>
+
 </body>
 </html>
+```
+
+Now:
+
+* **Log in** → redirects directly to the Microsoft authorization page.
+* **Microsoft Azure** → redirects to the same Microsoft page.
+* There is no `/login` request, so you won't get the previous **404**.
+* The email/password fields aren't submitted to your page.
